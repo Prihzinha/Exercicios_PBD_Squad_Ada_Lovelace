@@ -68,7 +68,7 @@ cursor.execute('INSERT INTO Produto_Categoria VALUES (5, 2)')
 
 # Inserir uma transação de compras teste
 # id da transação, data da compra, id do cliente, id do produto, quantidade, categoria
-cursor.execute('INSERT INTO Transacoes VALUES (1, "07/02/2024", 1, 1, 10, 2)')
+cursor.execute('INSERT INTO Transacoes VALUES (1, "2024-02-07", 1, 1, 10, 2)')
 
 #3. Consultas SQL:
 # Escrever consultas SQL para realizar as seguintes operações:
