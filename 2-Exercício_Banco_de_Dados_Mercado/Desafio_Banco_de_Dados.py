@@ -14,7 +14,6 @@ cursor.execute('CREATE TABLE Produtos (id INT PRIMARY KEY, nome VARCHAR(100), qu
 cursor.execute('CREATE TABLE Categorias (id INT PRIMARY KEY, nome VARCHAR(100));')
 cursor.execute('CREATE TABLE Produto_Categoria (produto_id INT, categoria_id INT, PRIMARY KEY (produto_id, categoria_id), FOREIGN KEY (produto_id) REFERENCES Produtos(id), FOREIGN KEY (categoria_id) REFERENCES Categorias(id));')
 cursor.execute('CREATE TABLE Transacoes (id INT PRIMARY KEY, data DATE, cliente_id INT, produto_id INT, quantidade INT, FOREIGN KEY (cliente_id) REFERENCES Clientes(id), FOREIGN KEY (produto_id) REFERENCES Produtos(id));')
-cursor.execute('ALTER TABLE Transacoes ADD COLUMN categoria INT')
 
 #2. Inserção de Dados:
 # Insira dados de exemplo nas tabelas para simular um ambiente de venda de eletrônicos. Certifique-se de incluir uma variedade de produtos e clientes;
@@ -83,3 +82,24 @@ for Transacoes in pesquisa:
     print(Transacoes)
 
 # Calcular o total de vendas por categoria de produto
+
+
+# Identificar os produtos mais vendidos.
+
+
+
+#4. Atualizações e Exclusões:
+# Escreva consultas SQL para atualizar e excluir registros do banco de dados, por exemplo, para atualizar a quantidade em estoque após uma venda ou remover um cliente
+
+# alterar tabela Transações adicionando uma coluna
+cursor.execute('ALTER TABLE Transacoes ADD COLUMN categoria INT')
+
+# alterar o primeiro registro de cliente de João para Brunna
+cursor.execute('UPDATE Clientes SET nome="Brunna" WHERE nome="João"')
+
+# alterar quantidade em estoque do Produto "PenDrive" usando id
+cursor.execute('UPDATE Produtos SET quantidade=110 WHERE id=1')
+
+# exclusão
+
+
