@@ -100,6 +100,6 @@ cursor.execute('UPDATE Clientes SET nome="Brunna" WHERE nome="João"')
 # alterar quantidade em estoque do Produto "PenDrive" usando id
 cursor.execute('UPDATE Produtos SET quantidade=110 WHERE id=1')
 
-# exclusão
-
+# exclusão do id = 1
+cursor.execute('DELETE FROM Clientes WHERE id = 1')
 
