@@ -82,15 +82,20 @@ for Transacoes in pesquisa:
     print(Transacoes)
 
 # Calcular o total de vendas por categoria de produto
-
+cursor.execute('SELECT Categorias.nome, SUM(Transacoes.quantidade) as total_vendas FROM Categorias JOIN Produto_Categoria ON Categorias.id = Transacoes.categoria JOIN Transacoes ON Produto_Categoria.produto_id = Transacoes.produto_id GROUP BY Categorias.nome')
+resultados = cursor.fetchall()
+for resultado in resultados:
+    print(f"Categoria: {resultado[0]}, Total de vendas: {resultado[1]}")
 
 # Identificar os produtos mais vendidos.
-
+cursor.execute('SELECT Produtos.nome, SUM(Transacoes.quantidade) as total_vendas FROM Produtos JOIN Transacoes ON Produtos.id = Transacoes.produto_id GROUP BY Produtos.nome ORDER BY total_vendas DESC LIMIT 1')
+produto = cursor.fetchall()
+for resultado in produto:
+    print(f"Categoria: {resultado[0]}, Total de vendas: {resultado[1]}")
 
 
 #4. Atualizações e Exclusões:
 # Escreva consultas SQL para atualizar e excluir registros do banco de dados, por exemplo, para atualizar a quantidade em estoque após uma venda ou remover um cliente
-
 # alterar tabela Transações adicionando uma coluna
 cursor.execute('ALTER TABLE Transacoes ADD COLUMN categoria INT')
 
