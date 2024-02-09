@@ -82,7 +82,7 @@ for Transacoes in pesquisa:
     print(Transacoes)
 
 # Calcular o total de vendas por categoria de produto
-cursor.execute('SELECT Categorias.nome, SUM(Transacoes.quantidade) as total_vendas FROM Categorias JOIN Produto_Categoria ON Categorias.id = Transacoes.categoria JOIN Transacoes ON Produto_Categoria.produto_id = Transacoes.produto_id GROUP BY Categorias.nome')
+cursor.execute('SELECT Categorias.nome, SUM(Transacoes.quantidade) as total_vendas FROM Categorias JOIN Produto_Categoria ON Categorias.id = Produto_Categoria.categoria_id JOIN Transacoes ON Produto_Categoria.produto_id = Transacoes.produto_id GROUP BY Categorias.nome')
 resultados = cursor.fetchall()
 for resultado in resultados:
     print(f"Categoria: {resultado[0]}, Total de vendas: {resultado[1]}")
@@ -107,4 +107,7 @@ cursor.execute('UPDATE Produtos SET quantidade=110 WHERE id=1')
 
 # exclusão do id = 1
 cursor.execute('DELETE FROM Clientes WHERE id = 1')
+
+# exclusão da coluna "categoria" na Tabela "Transacoes"
+cursor.execute('ALTER TABLE Transacoes DROP COLUMN categoria')
 
